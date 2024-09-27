@@ -1,1 +1,46 @@
+{% extends "layout.html" %}
 
+{% set active_page = "page1" %}
+
+{% block title %}Page 1{% endblock %}
+
+{% block content %}
+<!--<img src="/static/backgroundimg.jpg" class="rounded img mx-auto d-block " alt="Cinque Terre">-->
+<div class=" rounded mx-auto d-block img" id="CenterObj">
+	<div class="row pt-5 Mright">
+		<div class="col-sm-6">
+		</div>
+		<div class="col-sm-6 text-center">
+			<h1>Sign Up</h1>
+			<form action="/response" class="was-validated">
+				<div class="form-floating mb-3 mt-3">
+					<input type="text" class="form-control" id="usrnm" placeholder="Username" name="usrnm" required>
+					<label for="text">Username</label>
+					<div class="valid-feedback"></div>
+					<div class="invalid-feedback"></div>
+				</div>
+				<div class="form-floating mt-3 mb-3">
+					<input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+					<label for="email">Email</label>
+					<div class="valid-feedback"></div>
+					<div class="invalid-feedback"></div>
+					<hr class="hr" />
+				</div>
+				<div class="form-floating mt-3 mb-3">
+					<input type="Password" class="form-control" id="pword" placeholder="Password" name="pwrd" required>
+					<label for="pwrd">Password</label>
+					<div class="valid-feedback"></div>
+					<div class="invalid-feedback"></div>
+				</div>
+				<div class="d-grid">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+			<br><br>
+		</div>
+	</div>
+<br><br><br><br><br><br><br><br><br><br>
+</div>
+
+
+{% endblock %}

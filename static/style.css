@@ -1,1 +1,19 @@
+.backgroundblue{
+	background-color: #4361ee;
+}
 
+.img{
+	max-width: 80%;
+	margin-top: 5%;
+	height: 20%;
+}
+
+#CenterObj{
+	background-image: url("/static/backgroundimg.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.Mright{
+	margin-right:3px;
+}
