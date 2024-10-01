@@ -17,3 +17,13 @@
 .Mright{
 	margin-right:3px;
 }
+
+.MRightProfile{
+	margin-right:6%;
+}
+
+#CenterObjProfile{
+	background-image: url("/static/ProfileBackground.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}

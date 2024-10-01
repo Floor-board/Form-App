@@ -1,12 +1,56 @@
 <!DOCTYPE html>
+{% extends "layout.html" %}
+
+{% set active_page = "page2" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
 <html>
   <head>
     <title>Response</title>
   </head>
+  <style>
+	body {
+		background-color: {{ response4 }};
+	}
+  </style>
   <body>
-    <h1>Your Data:</h1>
-    <p>{{ response1 }}</p>
-	<p>{{ response2 }}</p>
-	<p>{{ response3 }}</p>
+	<div class=" rounded mx-auto d-block img" id="CenterObjProfile">
+		<div class="row pt-5 MRightProfile">
+			<div class="col-sm-7">
+			</div>
+			<div class="col-sm-5 ps-5">
+				<h1>Your Profile</h1>
+				<br>
+				<p>Username</p>
+				<h3>{{ response1 }}</h3>
+				<br>
+				<p>Email</p>
+				<h3>{{ response2 }}</h3>
+				<br>
+				<hr class="hr">
+				<button type="button" class="btn btn-dark"data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">Show Password</button>
+				<div class="collapse" id="collapsePassword">
+					<br>
+					<div class="card-body">
+						<h3>{{ response3 }}</h3>
+					</div>
+				</div>
+				<hr class="hr">
+				
+				<h2>Settings</h2>
+				<form>
+					<label for="Mycolor" class="form-label">Background Color</label>
+					<input name="Mycolor" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+					<div class="pt-2">
+					<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+				
+			<br><br><br><br><br>
+			</div>
+	</div>
   </body>
 </html>
+{% endblock %}
