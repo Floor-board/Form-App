@@ -7,14 +7,16 @@
 {% block content %}
 
 {% if logged_in %}
-        <li><p>{{ session['user_data']['name']}}</li>
-        <li><p>Github userid: {{ session['user_data']['login']}}</li>
 	{% endif %}
-        <li>
+	
 	  {% if logged_in %}
-	  <a href="/logout">Logout</a>
+
 	  {% else %}
-	  <a href="/login">Login</a>
+
 	  {% endif %}
+
+<h1>Welcome to this cars forum!</h1>
+<p>This is a form where you can talk about cars and such!</p>
+<p>Go to the next page to start posting!</p>
 
 {% endblock %}

@@ -9,6 +9,7 @@ import pprint
 from flask_oauthlib.client import OAuth
 from flask import render_template
 from markupsafe import Markup
+from pymongo import DESCENDING 
 
 # This code originally from https://github.com/lepture/flask-oauthlib/blob/master/example/github.py
 # Edited by P. Conrad for SPIS 2016 to add getting Client Id and Secret from
@@ -42,8 +43,9 @@ db_name = os.environ["MONGO_DBNAME"]
 
 client = pymongo.MongoClient(connection_string)
 db = client[db_name]
-collection=db['Forum01']
+collection=db['database1collection']
 x=0
+
 for anything in collection.find():
     print(anything)
        
@@ -63,6 +65,29 @@ def home():
 def page1():
     return render_template('page1.html')
 
+@app.route('/page2')
+def page2():
+    return render_template('page2.html')
+
+@app.route('/answerForumOne',methods=['GET','POST'])
+def renderForumOneAnswers():
+    if "user_data" in session:
+        forumPost=request.form['ques1']
+        doc = {"username":session['user_data']['login'], "number":"ee","text":forumPost}
+     
+        collection.insert_one(doc)
+    for anything in collection.find():
+        firstPost=anything["text"]
+    firstPost=get_posts()    
+    return render_template('page1.html', firstPost=firstPost)
+
+   
+#def get_posts():
+  #  option = []
+  #  for s in collection.find().sort('_id', DESCENDING):
+      #  formatted_post = f"<pre>{s['username']} : {s['text']}</pre>"
+
+    return render_template('page1.html')
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
 def login():
@@ -90,18 +115,27 @@ def authorized():
             session.clear()
             print(inst)
             message='Unable to login, please try again.  '
-    return render_template('message.html', message=message)
+    return render_template('index.html', message=message)
 
 @app.route('/googleb4c3aeedcc2dd103.html')
 def render_google_verification():
     return render_template('googleb4c3aeedcc2dd103.html')
 
+def get_posts():
+    messages=[]
+    userName=[]
+    for s in collection.find():
+        messages.append(s["text"])
+        userName.append(s["username"])
+    option=""
+    for s in collection.find():
+        option += Markup("<pre>" + str(s["username"]) + " : " + str(s["text"])  + "</pre>") #Use Markup so <, >, " are not escaped lt, gt, etc.
+    return option
    
 #the tokengetter is automatically called to check who is logged in.
 @github.tokengetter
 def get_github_oauth_token():
-    return session['github_token']
-
+    return session['github_token']   
 
 if __name__ == '__main__':
     app.run()

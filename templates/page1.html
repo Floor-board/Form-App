@@ -6,15 +6,18 @@
 
 {% block content %}
 
+<h1>Post something!</h1>
+
 {% if logged_in %}
-        <li><p>{{ session['user_data']['name']}}</li>
-        <li><p>Github userid: {{ session['user_data']['login']}}</li>
-	{% endif %}
-        <li>
-	  {% if logged_in %}
-	  <a href="/logout">Logout</a>
-	  {% else %}
-	  <a href="/login">Login</a>
-	  {% endif %}
+  <div>
+  <form action="/answerForumOne" method="POST">
+<input type="text" name="ques1">
+<button type="submit">POST</button>
+  </form>
+  </div>
+{% else %}
+<p>login to post a message</p>
+{% endif %}
+{{firstPost}}
 
 {% endblock %}
