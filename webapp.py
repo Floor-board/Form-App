@@ -91,7 +91,7 @@ def renderForumOneAnswers():
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
 def login():
-    return github.authorize(callback=url_for('authorized', _external=True, _scheme='http'))#https://www.perplexity.ai/search/im-getting-this-error-on-githu-R6uLkA9sR_Go8xtSsoG7JQ
+    return github.authorize(callback=url_for('authorized', _external=True, _scheme='https'))#https://www.perplexity.ai/search/im-getting-this-error-on-githu-R6uLkA9sR_Go8xtSsoG7JQ
 
 @app.route('/logout')
 def logout():
